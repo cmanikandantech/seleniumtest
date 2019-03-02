@@ -1,10 +1,11 @@
 
 import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.Test;
-import org.openqa.selenium.chrome.ChromeOptions;
 public class App
 {
  @Test
@@ -12,23 +13,22 @@ public class App
  public static void main(String[] args) {
 
 
- System.setProperty("webdriver.chrome.driver","C:\\DevOpsClass\\chromedriver_win32\\chromedriver.exe");
- ChromeOptions chromeOptions = new ChromeOptions();
- WebDriver driver = new ChromeDriver(chromeOptions);
+ System.setProperty("webdriver.gecko.driver","/home/edureka/geckodriver");
+ //ChromeOptions chromeOptions = new ChromeOptions();
+ //WebDriver driver = new ChromeDriver(chromeOptions);
+ 
+ FirefoxOptions options = new FirefoxOptions();
+ WebDriver driver = new FirefoxDriver(options);
 
- System.out.println("Hi, Welcome to Edureka's YouTube Live session on Selenium WebDriver");
+ System.out.println("Hi, Welcome to Edureka's Case Study on Selenium WebDriver");
 
 
- driver.get("http://localhost:8090/addressbook");
+ driver.get("http://localhost:3001");
 
  driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
- driver.findElement(By.className("v-button")).click();
- driver.findElement(By.id("gwt-uid-5")).sendKeys("Edureka");
- driver.findElement(By.id("gwt-uid-7")).sendKeys("DevOps");
- driver.findElement(By.id("gwt-uid-9")).sendKeys("9834562709");
- driver.findElement(By.id("gwt-uid-11")).sendKeys("Devops@edureka.co");
- driver.findElement(By.id("gwt-uid-13")).sendKeys("01/01/2015");
- driver.findElement(By.className("v-button-primary")).click();
+ driver.findElement(By.name("login")).sendKeys("devops");
+ driver.findElement(By.name("password")).sendKeys("test");
+ driver.findElement(By.name("click")).click();
  //Thread.sleep(5000);
  driver.quit();
  }
